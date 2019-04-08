@@ -13,4 +13,4 @@ for dic in fault_code_result:
     del dic['interpretation']
 print(fault_code_result)
 
-# for git testaaaaa
+# for git remote
