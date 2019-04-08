@@ -1,0 +1,73 @@
+<!--继承index.html-->
+{% extends "index.html" %}
+{% block page_css %}
+{% endblock %}
+<!--填充导航栏的页面名称-->
+{% block page_title %}
+    其他页面
+{% endblock %}
+<!--放置主页面内容-->
+{% block container %}
+    {% load staticfiles %}
+
+
+<p>测试页面</p>
+
+<table id="diagnosis" class="display table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>故障码</th>
+                <th>故障码说明</th>
+                <th>故障原因</th>
+                <th>处理方案</th>
+            </tr>
+        </thead>
+</table>
+
+
+<!--3.初始化Datatables-->
+<script>
+    $(document).ready(function() {
+
+        $('#diagnosis').DataTable(
+        {
+            "paging": true,
+            "searching": true,
+            // "ordering":  true,
+            "processing" : true,
+            // "serverSide": true,
+            "ajax": {
+                "url": "http://127.0.0.1:8000/engine_fault_code_ajax_data/",
+                "type": "GET",
+                "dataSrc":"",
+
+            <!--{#请求成功回调函数#}-->
+            <!--success:function (data) {-->
+            <!--alert(data)-->
+            <!--alert("请求成功")-->
+            <!--},-->
+            <!--{#请求失败回调函数#}-->
+            <!--error:function () {-->
+            <!--alert("请求失败")-->
+            <!--}-->
+
+
+                },
+
+            columns: [
+                { data: "fault_code" },
+                { data: "interpretation" },
+                { data: "fault_cause" },
+                { data: "diagnostic_scheme" }
+                ],
+
+
+        }
+
+        );
+    });
+
+</script>
+
+
+{% endblock %}
