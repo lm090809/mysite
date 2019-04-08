@@ -12,3 +12,5 @@ for dic in fault_code_result:
     del dic['fault_code']
     del dic['interpretation']
 print(fault_code_result)
+
+# for git test
